@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <form>
+        <label for="numData">Put some number below 50</label>
+        <input type="text" id="totalNumbers" name="totalNumbers"><br>
+        <input type="text" id="numbers" name="numbers"><br>
+        <input type="button" name="Submit" value="Submit" onclick="calculate()"></input><br>
+        <input type="text" id="sum" name="sum"><br>
+        <input type="text" id="product" name="product">
+    </form>
+    <script src="./printing10numbers.js"></script>
+    <script>
+        function calculate() {
+            let numData = document.getElementById('totalNumbers').value; // 5
+            let numbersStr = document.getElementById('numbers').value; // 1 2 3 4 5
+            let numbers = numbersStr.split(' '); 
+            /*
+               0 - 1
+               1 - 2
+               2 - 3
+                4
+                5
+            */
+            if(numbers.length !== parseInt(numData)) {
+                alert("total numbers not equal to the numbers provided")
+            }
+            let sum = 0;
+            let product = 1;
+            for (let i = 0; i < numbers.length; i++) {
+                if (i % 2 == 0) {
+                    sum += parseInt(numbers[i]); // 0 + 1 = 1, 1 + 3 = 4, 4 + 5 
+                } else {
+                    product *= numbers[i]; // 1 * 2 = 2, 2 * 4 = 8
+                }
+            }
+            document.getElementById('sum').value = sum;
+            document.getElementById('product').value = product;
+        }
+    </script>
+</body>
+
+</html>
